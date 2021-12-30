@@ -1,2 +1,2 @@
-<head> CTF </head>
+<Title> CTF </Title>
 Learn and Play
