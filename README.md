@@ -1,2 +1,2 @@
-# CTF
-Learn &amp;&amp; Play
+<head> CTF </head>
+Learn and Play
