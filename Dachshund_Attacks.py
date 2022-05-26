@@ -5,26 +5,30 @@ e = 1692544082862085836737597335972833719723474577910431879061358704222296395968
 n = 139375161905459816744960525266378539413530045530481607707508538171907221985305691897337076009094070356558618014437589552537582553767486231016110405606446285162912424403656224892845937410121770063914196443903221684671220920391170266378110315538442097562461400893442851832381933914054132698841311833874895164141
 c = 5445146897682976336178522823637653845830018595788264321640949706617126651908450272444521813266206400065871497959159929467961115934772182277572374476742858498068216064993376962732188963820460626580773233705579106877923374535240449058199407199157996676811882054797137925375061937777289652249099230327575445003
 
-def lien_phan_so(a:int, b:int, l:list):
+
+def lien_phan_so(a: int, b: int, l: list):
     i = a // b
     l.append(i)
     if i * b == a:
         return l
     return lien_phan_so(b, a - b*i, l)
 
-def Vi_et(tong:int, tich:int):
+
+def Vi_et(tong: int, tich: int):
     delta = pow(tong, 2) - 4 * tich
-    if delta < 0: return 0,0
+    if delta < 0:
+        return 0, 0
     p = (tong - isqrt(delta))//2
     q = (tong + isqrt(delta))//2
     return p, q
+
 
 l = []
 l = lien_phan_so(e, n, l)
 num = len(l)
 a = [l[0]]
 b = [1]
-for i in range (1, n):
+for i in range(1, n):
     if (i-2) >= 0:
         k = l[i]*a[i-1] + a[i-2]
         d = l[i]*b[i-1] + b[i-2]
@@ -34,7 +38,7 @@ for i in range (1, n):
     a.append(k)
     b.append(d)
     phi = (e*d - 1)//k
-    p, q = Vi_et(n- phi + 1, n)
+    p, q = Vi_et(n - phi + 1, n)
     if p*q == n:
         break
 if p*q == n:
@@ -44,16 +48,6 @@ if p*q == n:
     print("e:", e)
     print("d:", d)
     print("phiN:", phi)
-    print("flag:", long_to_bytes(pow(c,d,n)).decode())
+    print("flag:", long_to_bytes(pow(c, d, n)).decode())
 else:
     print("Can't use Dachshund Attaack for this RSA !")
-
-
-
-
-
-    
-
-
-
-    

